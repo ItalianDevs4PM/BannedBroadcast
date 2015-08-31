@@ -32,7 +32,6 @@ class Main extends PluginBase{
       foreach($this->getServer()->getOnlinePlayers as $ps){
         if($ps->hasPermission("bb.ban"){
           $ps->sendMessage(TextFormat::BLUE . "[BB] ".$bmessage);
-          $this->getLogger()->info(TextFormat::BLUE . "[BB] ".$bmessage);
         }
       }
     }
@@ -40,7 +39,6 @@ class Main extends PluginBase{
       foreach($this->getServer()->getOnlinePlayers as $ps){
         if($ps->hasPermission("bb.whitelist"){
           $ps->sendMessage(TextFormat::BLUE . "[BB] ".$wmessage);
-          $this->getLogger()->info(TextFormat::BLUE . "[BB] ".$wmessage);
         }
       }
     }
