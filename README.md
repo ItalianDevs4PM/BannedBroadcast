@@ -33,7 +33,7 @@ Let's see how it works:
 
 ### Variables
 
-The variables are two: ```{player}``` and ```{ip}```
+There are two variables: ```{player}``` and ```{ip}```
 
 ```{player}``` shows the banned or unwhitelisted player's nickname.
 
