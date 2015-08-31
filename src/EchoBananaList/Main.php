@@ -18,5 +18,12 @@ $ps->sendMessage(TextFormat::BLUE . "[EBL]" $name." Ha tentato di entrare nel se
     }
    }
   }
+if(!$player->isWhitelisted){
+foreach($this->getServer()->getOnlinePlayers as $ps){
+if($ps->hasPermission("ebl.whitelist"){
+$ps->sendMessage(TextFormat::BLUE $name." Ha tentato di entrare nel server anche se in whitelist");
+    }
+   }
+  }
  }
 }
