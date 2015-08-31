@@ -26,14 +26,14 @@ $name = $e->getPlayer()->getName();
 if($player->isBanned){
 foreach($this->getServer()->getOnlinePlayers as $ps){
 if($ps->hasPermission("ebl.ban"){
-$ps->sendMessage(TextFormat::BLUE . "[EBL]" $bmessage." ");
+$ps->sendMessage(TextFormat::BLUE . "[EBL] $bmessage ");
     }
    }
   }
 if($player->isWhitelisted()){
 foreach($this->getServer()->getOnlinePlayers as $ps){
 if($ps->hasPermission("ebl.whitelist"){
-$ps->sendMessage(TextFormat::BLUE . "[EBL]" $wmessage." ");
+$ps->sendMessage(TextFormat::BLUE . "[EBL] $wmessage ");
     }
    }
   }
