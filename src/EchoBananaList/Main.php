@@ -4,7 +4,7 @@ namespace EchoBananaList\Main;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
-use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerPreLoginEvent;
 
 class Main extends PluginBase{
 
@@ -21,7 +21,7 @@ $ps->sendMessage(TextFormat::BLUE . "[EBL]" $name." Ha tentato di entrare nel se
 if(!$player->isWhitelisted){
 foreach($this->getServer()->getOnlinePlayers as $ps){
 if($ps->hasPermission("ebl.whitelist"){
-$ps->sendMessage(TextFormat::BLUE $name." Ha tentato di entrare nel server anche se in whitelist");
+$ps->sendMessage(TextFormat::BLUE . "[EBL]" $name." Ha tentato di entrare nel server anche se in whitelist");
     }
    }
   }
