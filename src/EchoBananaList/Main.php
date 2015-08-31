@@ -8,6 +8,15 @@ use pocketmine\event\player\PlayerPreLoginEvent;
 
 class Main extends PluginBase{
 
+public function OnEnable(){
+$this->getServer()->getPluginManager()->registerEvents($this, $this);
+$this->getLogger()->info(TextFormat::GREEN . "[EBL] Enabled");
+}
+
+public function OnDisable(){
+$this->getLogger()->info(TextFormat::RED . "[EBL] Disabled");
+}
+
 public function onPreLogin(PlayerPreLoginEvent $e){
 $player = $e->getPlayer();
 $name = $e->getPlayer()->getName();
