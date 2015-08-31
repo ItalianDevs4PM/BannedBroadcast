@@ -30,7 +30,7 @@ $ps->sendMessage(TextFormat::BLUE . "[EBL] $bmessage ");
     }
    }
   }
-if($player->isWhitelisted()){
+if(!$player->isWhitelisted()){
 foreach($this->getServer()->getOnlinePlayers as $ps){
 if($ps->hasPermission("ebl.whitelist"){
 $ps->sendMessage(TextFormat::BLUE . "[EBL] $wmessage ");
