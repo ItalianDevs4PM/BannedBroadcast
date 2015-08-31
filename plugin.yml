@@ -1,12 +1,17 @@
-name: EchoBananaList
+
+# BannedBroadcast by @ItalianDevs4PM
+
+name: BannedBroadcast
+description: Broadcast a message when a banned or unwhitelisted player attempts to join
 api: [1.12.0]
 version: 1.0.0
-main: EchoBananaList\Main
-author: ItalianDevs4PM <xionbig, luca28pet, XEmAX32,fycarman, AryToNex, EvolSoft>
+main: BannedBroadcast\Main
+author: ItalianDevs4PM <xionbig, luca28pet, XEmAX32, fycarman, AryToNex, EvolSoft>
+website: https://github.com/ItalianDevs4PM
 permissions:
-   ebl.ban:
+   bb.ban:
      default: op
-       description:
-   ebl.whitelist:
+       description: "Broadcast a message when a banned player attempts to join"
+   bb.whitelist:
      default: op
-       description:
+       description: "Broadcast a message when a unwhitelisted player attempts to join"
