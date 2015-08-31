@@ -36,7 +36,7 @@ class Main extends PluginBase{
       }
     }
     if(!$player->isWhitelisted()){
-      foreach($this->getServer()->getOnlinePlayers() as $ps){
+      foreach($this->getServer()->getOnlinePlayers as $ps){
         if($ps->hasPermission("bb.whitelist"){
           $ps->sendMessage(TextFormat::BLUE . "[BB] ".$wmessage);
         }
