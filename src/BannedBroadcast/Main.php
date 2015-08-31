@@ -22,22 +22,20 @@ class Main extends PluginBase{
 
   public function onPreLogin(PlayerPreLoginEvent $e){
     $player = $e->getPlayer();
-    $name = $e->getPlayer()->getName();
-    $ip = $e->getPlayer()->getAddress();
-    $bmessageconf = $this->getConfig()->get("banned-message");
-    $wmessageconf = $this->getConfig()->get("unwhitelisted-message");
-    $bmessage = str_replace(["{player}","{ip}"],[$name,$ip],$bmessageconf);
-    $wmessage = str_replace(["{player}","{ip}"],[$name,$ip],$wmessageconf);
+
+    $bmessage = str_replace(["{player}","{ip}"] ,[$player->getName(), $player->getAddress()], $this->getConfig()->get("banned-message"));
+    $wmessage = str_replace(["{player}","{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("unwhitelisted-message"));
+
     if($player->isBanned()){
-      foreach($this->getServer()->getOnlinePlayers as $ps){
-        if($ps->hasPermission("bb.ban"){
+      foreach($this->getServer()->getOnlinePlayers() as $ps){
+        if($ps->hasPermission("bb.ban")){
           $ps->sendMessage(TextFormat::BLUE . "[BB] ".$bmessage);
         }
       }
     }
     if(!$player->isWhitelisted()){
-      foreach($this->getServer()->getOnlinePlayers as $ps){
-        if($ps->hasPermission("bb.whitelist"){
+      foreach($this->getServer()->getOnlinePlayers() as $ps){
+        if($ps->hasPermission("bb.whitelist")){
           $ps->sendMessage(TextFormat::BLUE . "[BB] ".$wmessage);
         }
       }
