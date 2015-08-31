@@ -28,7 +28,7 @@ class Main extends PluginBase{
     $wmessageconf = $this->getConfig()->get("unwhitelisted-message");
     $bmessage = str_replace(["{player}","{ip}"],[$name,$ip],$bmessageconf);
     $wmessage = str_replace(["{player}","{ip}"],[$name,$ip],$wmessageconf);
-    if($player->isBanned){
+    if($player->isBanned()){
       foreach($this->getServer()->getOnlinePlayers as $ps){
         if($ps->hasPermission("bb.ban"){
           $ps->sendMessage(TextFormat::BLUE . "[BB] ".$bmessage);
