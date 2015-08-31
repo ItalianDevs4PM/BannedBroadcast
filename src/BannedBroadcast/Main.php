@@ -10,13 +10,13 @@ use pocketmine\event\player\PlayerPreLoginEvent;
 
 class Main extends PluginBase{
 
-  public function OnEnable(){
+  public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->getLogger()->info(TextFormat::GREEN . "BannedBroadcast is enabled!");
     $this->saveDefaultConfig();
   }
 
-  public function OnDisable(){
+  public function onDisable(){
     $this->getLogger()->info(TextFormat::RED . "BannedBroadcast is disabled!");
   }
 
