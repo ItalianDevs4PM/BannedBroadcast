@@ -1,6 +1,12 @@
-//*Config file for EchoBananaList by ItalianDevs4PM <xionbig, fycarman, luca28pet, XEmAX32, AryToNex, EvolSoft>
-You can use {player} for the name of the player and {ip} for the ip of the player.
-Here write the message for whitelist join *//
-WMessage:
-//*Here write the message for ban join *//
-BMessage:
+---
+# BannedBroadcast v1.0.0 by @ItalianDevs4PM <xionbig, fycarman, luca28pet, XEmAX32, AryToNex, EvolSoft>
+
+# Write here the message you want to display when a banned player attempts to join
+# Variables: {player} , {ip}
+banned-message: "{player} [{ip}] attempted to join but he/she is banned!"
+
+# Write here the message you want to display when a unwhitelisted player attempts to join
+# Variables: {player} , {ip]
+unwhitelisted-message: "{player} [{ip}] attempted to join but he/she isn't in the whitelist!"
+
+...
