@@ -4,11 +4,12 @@
 
 namespace BannedBroadcast;
 
+use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
 use pocketmine\event\player\PlayerPreLoginEvent;
 
-class Main extends PluginBase{
+class Main extends PluginBase implements Listener{
 
   public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
