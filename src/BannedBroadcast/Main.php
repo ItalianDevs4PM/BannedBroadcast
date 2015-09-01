@@ -23,10 +23,10 @@ class Main extends PluginBase implements Listener{
   public function onEnable(){
     $this->saveDefaultConfig();
     if($this->getConfig()->get("banned-switch") !== "on" and $this->getConfig()->get("banned-switch") !== "off"){
-      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter '".$this->getConfig()->get("banned-switch")."' on banned switch");
+      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter '.$this->getConfig()->get("banned-switch").' on banned switch");
       $this->getServer()->getPluginManager()->disablePlugin($this);
     }elseif($this->getConfig()->get("unwhitelisted-switch") !== "on" and $this->getConfig()->get("unwhitelisted-switch") !== "off"){
-      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter '".$this->getConfig()->get("unwhitelisted-switch")."' on unwhitelisted switch");
+      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter '.$this->getConfig()->get("unwhitelisted-switch").' on unwhitelisted switch");
       $this->getServer()->getPluginManager()->disablePlugin($this);
     }else{
       $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -40,8 +40,8 @@ class Main extends PluginBase implements Listener{
 
   public function onPreLogin(PlayerPreLoginEvent $e){
     $player = $e->getPlayer();
-    $bmessage = str_replace(["{player}","{ip}"] ,[$player->getName(), $player->getAddress()], $this->getConfig()->get("banned-message"));
-    $wmessage = str_replace(["{player}","{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("unwhitelisted-message"));
+    $bmessage = str_replace(["{player}", "{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("banned-message"));
+    $wmessage = str_replace(["{player}", "{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("unwhitelisted-message"));
     
     if($this->getConfig()->get("banned-switch") === "on"){
       if($player->isBanned()){
