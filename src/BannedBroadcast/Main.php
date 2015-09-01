@@ -32,10 +32,10 @@ class Main extends PluginBase implements Listener{
 
   public function onPreLogin(PlayerPreLoginEvent $e){
     $player = $e->getPlayer();
-
     $bmessage = str_replace(["{player}","{ip}"] ,[$player->getName(), $player->getAddress()], $this->getConfig()->get("banned-message"));
     $wmessage = str_replace(["{player}","{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("unwhitelisted-message"));
-
+    
+    if($this->getConfig()->get("banned-switch") !== "on") return;
     if($player->isBanned()){
       foreach($this->getServer()->getOnlinePlayers() as $ps){
         if($ps->hasPermission("bb.ban")){
@@ -43,6 +43,7 @@ class Main extends PluginBase implements Listener{
         }
       }
     }
+    if($this->getConfig()->get("unwhitelisted-switch") !== "on") return;
     if(!$player->isWhitelisted()){
       foreach($this->getServer()->getOnlinePlayers() as $ps){
         if($ps->hasPermission("bb.whitelist")){
