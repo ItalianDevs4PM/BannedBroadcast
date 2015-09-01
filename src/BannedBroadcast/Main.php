@@ -21,9 +21,17 @@ use pocketmine\event\player\PlayerPreLoginEvent;
 class Main extends PluginBase implements Listener{
 
   public function onEnable(){
-    $this->getServer()->getPluginManager()->registerEvents($this, $this);
-    $this->getLogger()->info(TextFormat::GREEN . "BannedBroadcast is enabled!");
-    $this->saveDefaultConfig();
+    if(!($this->getConfig()->get("banned-switch") == "on" or $this->getConfig()->get("banned-switch") == "off")){
+      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter '".$this->getConfig()->get("banned-switch")."' on banned switch");
+      $this->getServer()->getPluginManager()->disablePlugin($this);
+    }elseif(!($this->getConfig()->get("unwhitelisted-switch") == "on" or $this->getConfig()->get("unwhitelisted-switch") == "off")){
+      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter '".$this->getConfig()->get("unwhitelisted-switch")."' on unwhitelisted switch");
+      $this->getServer()->getPluginManager()->disablePlugin($this);
+    }else{
+      $this->getServer()->getPluginManager()->registerEvents($this, $this);
+      $this->getLogger()->info(TextFormat::GREEN . "BannedBroadcast is enabled!");
+      $this->saveDefaultConfig();
+    }
   }
 
   public function onDisable(){
