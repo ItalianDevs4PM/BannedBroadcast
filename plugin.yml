@@ -9,9 +9,13 @@ main: BannedBroadcast\Main
 author: ItalianDevs4PM <xionbig, luca28pet, XEmAX32, fycarman, AryToNex, EvolSoft>
 website: https://github.com/ItalianDevs4PM
 permissions:
-  bb.ban:
+  bb:
     default: op
-    description: "Broadcast a message when a banned player attempts to join"
-  bb.whitelist:
-    default: op
-    description: "Broadcast a message when a unwhitelisted player attempts to join"
+    description: "Access to all BannedBroadcast functions"
+    children:
+      bb.ban:
+        default: op
+        description: "Broadcast a message when a banned player attempts to join"
+      bb.whitelist:
+        default: op
+        description: "Broadcast a message when a unwhitelisted player attempts to join"
