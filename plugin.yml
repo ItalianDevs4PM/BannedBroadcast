@@ -8,6 +8,13 @@ version: 1.0.0
 main: BannedBroadcast\Main
 author: ItalianDevs4PM <xionbig, luca28pet, XEmAX32, fycarman, AryToNex, EvolSoft>
 website: https://github.com/ItalianDevs4PM
+commands:
+  unwl-switch:
+    description: Switch unwhitelisted alerts
+    permission: bb.cmd.unwlswitch
+  ban-switch:
+    description: Switch ban alerts
+    permission: bb.cmd.banswitch
 permissions:
   bb:
     default: op
@@ -19,3 +26,13 @@ permissions:
       bb.whitelist:
         default: op
         description: "Broadcast a message when a unwhitelisted player attempts to join"
+      bb.cmd:
+        default: op
+        description: "Run all BannedBroadcast commands"
+        children:
+          bb.cmd.unwlswitch:
+            default: op
+            description: "Run unwl-switch command"
+          bb.cmd.banswitch:
+            default: op
+            description: "Run ban-switch command"
