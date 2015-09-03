@@ -45,24 +45,20 @@ class Main extends PluginBase implements Listener{
     $bmessage = str_replace(["{player}", "{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("banned-message"));
     $wmessage = str_replace(["{player}", "{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("unwhitelisted-message"));
     
-    if($this->getConfig()->get("banned-switch") === "on"){
-      if($player->isBanned()){
-        foreach($this->getServer()->getOnlinePlayers() as $ps){
-          if($ps->hasPermission("bb.ban")){
-            $ps->sendMessage(TextFormat::BLUE . "[BB] ".$bmessage);
-          }
-        }  
+    if($this->getConfig()->get("banned-switch") === "on" and $player->isBanned()){
+      foreach($this->getServer()->getOnlinePlayers() as $ps){
+        if($ps->hasPermission("bb.ban")){
+          $ps->sendMessage(TextFormat::BLUE . "[BB] ".$bmessage);
+        }
       }
     }
     
-    if($this->getConfig()->get("unwhitelisted-switch") === "on"){
-      if(!$player->isWhitelisted()){
-        foreach($this->getServer()->getOnlinePlayers() as $ps){
-          if($ps->hasPermission("bb.whitelist")){
-            $ps->sendMessage(TextFormat::BLUE . "[BB] ".$wmessage);
-          }
-        }  
-      }
+    if($this->getConfig()->get("unwhitelisted-switch") === "on" and !$player->isWhitelisted()){
+      foreach($this->getServer()->getOnlinePlayers() as $ps){
+        if($ps->hasPermission("bb.whitelist")){
+          $ps->sendMessage(TextFormat::BLUE . "[BB] ".$wmessage);
+        }
+      }  
     }
   }
 
