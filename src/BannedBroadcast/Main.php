@@ -13,6 +13,8 @@ the Free Software Foundation, either version 3 of the License, or
 
 namespace BannedBroadcast;
 
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
@@ -23,10 +25,10 @@ class Main extends PluginBase implements Listener{
   public function onEnable(){
     $this->saveDefaultConfig();
     if($this->getConfig()->get("banned-switch") !== "on" and $this->getConfig()->get("banned-switch") !== "off"){
-      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter '.$this->getConfig()->get("banned-switch").' on banned switch");
+      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter ".$this->getConfig()->get("banned-switch")." on banned switch");
       $this->getServer()->getPluginManager()->disablePlugin($this);
     }elseif($this->getConfig()->get("unwhitelisted-switch") !== "on" and $this->getConfig()->get("unwhitelisted-switch") !== "off"){
-      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter '.$this->getConfig()->get("unwhitelisted-switch").' on unwhitelisted switch");
+      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter ".$this->getConfig()->get("unwhitelisted-switch")." on unwhitelisted switch");
       $this->getServer()->getPluginManager()->disablePlugin($this);
     }else{
       $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -63,5 +65,27 @@ class Main extends PluginBase implements Listener{
       }
     }
   }
+
+    public function onCommand(CommandSender $sender, Command $command, $label, array $args){
+        switch($command->getName()){
+            case "unwl-switch":
+                if(isset($args[0])){
+                    if($args[0] == "on") {
+                        $this->getConfig()->set("unwhitelisted-switch", "on");
+                    }elseif($args[0] == "off"){
+                        $this->getConfig()->set("unwhitelisted-switch", "off");
+                    }
+                }
+                break;
+            case "unban-switch":
+                if(isset($args[0])){
+                    if($args[0] == "on"){
+                        $this->getConfig()->set("banned-switch", "on");
+                    }elseif($args == "off"){
+                        $this->getConfig()->set("banned-switch", "off");
+                    }
+                }
+        }
+    }
   
 }
