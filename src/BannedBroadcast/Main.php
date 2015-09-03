@@ -84,7 +84,7 @@ class Main extends PluginBase implements Listener{
                   return false;
                 }
                 break;
-            case "unban-switch":
+            case "ban-switch":
                 if(isset($args[0])){
                     if(strtolower($args[0]) === "on"){
                         $this->getConfig()->set("banned-switch", "on");
