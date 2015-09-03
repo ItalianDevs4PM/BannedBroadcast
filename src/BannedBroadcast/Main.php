@@ -70,21 +70,37 @@ class Main extends PluginBase implements Listener{
         switch($command->getName()){
             case "unwl-switch":
                 if(isset($args[0])){
-                    if($args[0] == "on") {
+                    if(strtolower($args[0]) === "on") {
                         $this->getConfig()->set("unwhitelisted-switch", "on");
-                    }elseif($args[0] == "off"){
+                        $sender->sendMessage("Unwhitelisted alerts enabled");
+                    }elseif(strtolower($args[0]) === "off"){
                         $this->getConfig()->set("unwhitelisted-switch", "off");
+                        $sender->sendMessage("Unwhitelisted alerts disabled");
+                    }else{
+                      return false;
                     }
+                    return true;
+                }else{
+                  return false;
                 }
                 break;
             case "unban-switch":
                 if(isset($args[0])){
-                    if($args[0] == "on"){
+                    if(strtolower($args[0]) === "on"){
                         $this->getConfig()->set("banned-switch", "on");
-                    }elseif($args == "off"){
+                        $sender->sendMessage("Banned alerts enabled");
+                    }elseif(strtolower($args[0]) === "off"){
                         $this->getConfig()->set("banned-switch", "off");
+                        $sender->sendMessage("Banned alerts disabled");
+                    }else{
+                      return false;
                     }
+                    return true;
+                }else{
+                  return false;
                 }
+            default:
+                return false;
         }
     }
   
