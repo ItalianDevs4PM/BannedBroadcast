@@ -4,16 +4,18 @@
 name: BannedBroadcast
 description: Broadcast a message when a banned or unwhitelisted player attempts to join
 api: [1.12.0]
-version: 1.0.0
+version: 1.0.1
 main: BannedBroadcast\Main
 author: ItalianDevs4PM <xionbig, luca28pet, XEmAX32, fycarman, AryToNex, EvolSoft>
 website: https://github.com/ItalianDevs4PM
 commands:
   unwl-switch:
     description: Switch unwhitelisted alerts
+    usage: "/unwl-switch <on|off>"
     permission: bb.cmd.unwlswitch
   ban-switch:
     description: Switch ban alerts
+    usage: "/ban-switch <on|off>"
     permission: bb.cmd.banswitch
 permissions:
   bb:
