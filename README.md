@@ -2,7 +2,7 @@
 
 Version: **1.0.0**
 
-For PocketMine: **1.5** (API **1.12.0**)
+For PocketMine: **1.5** and above (API **1.12.0**)
 
 ## License
 
