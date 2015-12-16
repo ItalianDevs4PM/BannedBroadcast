@@ -14,7 +14,7 @@ banned-message: "{player} [{ip}] attempted to join but he/she is banned!"
 unwhitelisted-switch: true
 
 # Write here the message you want to display when a unwhitelisted player attempts to join
-# Variables: {player} , {ip]
+# Variables: {player} , {ip}
 unwhitelisted-message: "{player} [{ip}] attempted to join but he/she isn't in the whitelist!"
 
 ...
