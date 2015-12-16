@@ -25,19 +25,17 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 This simple plugin allows to OPs (or everyone who have ```bb.ban``` and ```bb.whitelist``` permissions) to know when a banned or unwhitelisted player attempts to join.
 
+## Commands
+
+```/bb on|off``` toggles the banned alert
+
+```/unwl on|off``` toggles the unwhitelisted alert
+
 ## The config.yml file
 
 This plugin has a config.yml file which allows you to personalize displayed messages.
 
 Let's see how it works:
-
-### Variables
-
-There are two variables: ```{player}``` and ```{ip}```
-
-```{player}``` shows the banned or unwhitelisted player's nickname.
-
-```{ip}``` shows the banned or unwhitelisted player's IP address.
 
 ### Structure of config.yml file
 
@@ -45,16 +43,31 @@ There are two variables: ```{player}``` and ```{ip}```
 ---
 # BannedBroadcast v1.0.0 by @ItalianDevs4PM <xionbig, fycarman, luca28pet, XEmAX32, AryToNex, EvolSoft>
 
+# Switch for banned messages
+# If true the plugin will send messages to players.
+banned-switch: true
+
 # Write here the message you want to display when a banned player attempts to join
 # Variables: {player} , {ip}
 banned-message: "{player} [{ip}] attempted to join but he/she is banned!"
 
+# Switch for unwhitelisted messages
+# If true the plugin will send messages to players.
+unwhitelisted-switch: true
+
 # Write here the message you want to display when a unwhitelisted player attempts to join
-# Variables: {player} , {ip]
+# Variables: {player} , {ip}
 unwhitelisted-message: "{player} [{ip}] attempted to join but he/she isn't in the whitelist!"
 
 ...
 ```
+### Variables
+
+There are two variables: ```{player}``` and ```{ip}```
+
+```{player}``` shows the banned or unwhitelisted player's nickname.
+
+```{ip}``` shows the banned or unwhitelisted player's IP address.
 
 ## Credits
 
