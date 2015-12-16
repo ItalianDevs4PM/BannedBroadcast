@@ -1,6 +1,6 @@
 <?php
 
-# BannedBroadcast by @ItalianDevs4PM
+// BannedBroadcast by @ItalianDevs4PM
 
 /*
 Copyright (C) 2015 ItalianDevs4PM
@@ -24,11 +24,11 @@ class Main extends PluginBase implements Listener{
 
   public function onEnable(){
     $this->saveDefaultConfig();
-    if($this->getConfig()->get("banned-switch") !== "on" and $this->getConfig()->get("banned-switch") !== "off"){
-      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter ".$this->getConfig()->get("banned-switch")." on banned switch");
+    if($this->getConfig()->get("banned-switch") !== true and $this->getConfig()->get("banned-switch") !== false){
+      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter ".$this->getConfig()->get("banned-switch")." on banned-switch");
       $this->getServer()->getPluginManager()->disablePlugin($this);
-    }elseif($this->getConfig()->get("unwhitelisted-switch") !== "on" and $this->getConfig()->get("unwhitelisted-switch") !== "off"){
-      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter ".$this->getConfig()->get("unwhitelisted-switch")." on unwhitelisted switch");
+    }elseif($this->getConfig()->get("unwhitelisted-switch") !== true and $this->getConfig()->get("unwhitelisted-switch") !== false){
+      $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter ".$this->getConfig()->get("unwhitelisted-switch")." on unwhitelisted-switch");
       $this->getServer()->getPluginManager()->disablePlugin($this);
     }else{
       $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -45,18 +45,18 @@ class Main extends PluginBase implements Listener{
     $bmessage = str_replace(["{player}", "{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("banned-message"));
     $wmessage = str_replace(["{player}", "{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("unwhitelisted-message"));
     
-    if($this->getConfig()->get("banned-switch") === "on" and $player->isBanned()){
+    if($this->getConfig()->get("banned-switch") === true and $player->isBanned()){
       foreach($this->getServer()->getOnlinePlayers() as $ps){
         if($ps->hasPermission("bb.ban")){
-          $ps->sendMessage(TextFormat::BLUE . "[BB] ".$bmessage);
+          $ps->sendMessage(TextFormat::YELLOW . "[BB] ".$bmessage);
         }
       }
     }
     
-    if($this->getConfig()->get("unwhitelisted-switch") === "on" and !$player->isWhitelisted()){
+    if($this->getConfig()->get("unwhitelisted-switch") === true and !$player->isWhitelisted()){
       foreach($this->getServer()->getOnlinePlayers() as $ps){
         if($ps->hasPermission("bb.whitelist")){
-          $ps->sendMessage(TextFormat::BLUE . "[BB] ".$wmessage);
+          $ps->sendMessage(TextFormat::YELLOW . "[BB] ".$wmessage);
         }
       }  
     }
@@ -67,11 +67,11 @@ class Main extends PluginBase implements Listener{
             case "unwl-switch":
                 if(isset($args[0])){
                     if(strtolower($args[0]) === "on") {
-                        $this->getConfig()->set("unwhitelisted-switch", "on");
-                        $sender->sendMessage("Unwhitelisted alerts enabled");
+                        $this->getConfig()->set("unwhitelisted-switch", true);
+                        $sender->sendMessage(TextFormat::GREEN . "[BB] Unwhitelisted alerts enabled");
                     }elseif(strtolower($args[0]) === "off"){
-                        $this->getConfig()->set("unwhitelisted-switch", "off");
-                        $sender->sendMessage("Unwhitelisted alerts disabled");
+                        $this->getConfig()->set("unwhitelisted-switch", false);
+                        $sender->sendMessage(TextFormat::RED . "[BB] Unwhitelisted alerts disabled");
                     }else{
                       return false;
                     }
@@ -83,11 +83,11 @@ class Main extends PluginBase implements Listener{
             case "ban-switch":
                 if(isset($args[0])){
                     if(strtolower($args[0]) === "on"){
-                        $this->getConfig()->set("banned-switch", "on");
-                        $sender->sendMessage("Banned alerts enabled");
+                        $this->getConfig()->set("banned-switch", true);
+                        $sender->sendMessage(TextFormat::GREEN . "[BB] Banned alerts enabled!");
                     }elseif(strtolower($args[0]) === "off"){
-                        $this->getConfig()->set("banned-switch", "off");
-                        $sender->sendMessage("Banned alerts disabled");
+                        $this->getConfig()->set("banned-switch", false);
+                        $sender->sendMessage(TextFormat::RED . "[BB] Banned alerts disabled!");
                     }else{
                       return false;
                     }
