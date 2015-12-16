@@ -64,7 +64,7 @@ class Main extends PluginBase implements Listener{
 
     public function onCommand(CommandSender $sender, Command $command, $label, array $args){
         switch($command->getName()){
-            case "unwl-switch":
+            case "unwl":
                 if(isset($args[0])){
                     if(strtolower($args[0]) === "on") {
                         $this->getConfig()->set("unwhitelisted-switch", true);
@@ -80,7 +80,7 @@ class Main extends PluginBase implements Listener{
                   return false;
                 }
                 break;
-            case "ban-switch":
+            case "bb":
                 if(isset($args[0])){
                     if(strtolower($args[0]) === "on"){
                         $this->getConfig()->set("banned-switch", true);
