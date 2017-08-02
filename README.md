@@ -33,7 +33,7 @@ This simple plugin allows to OPs (or everyone who have ```bb.ban``` and ```bb.wh
 
 ## The config.yml file
 
-This plugin has a config.yml file which allows you to personalize displayed messages.
+This plugin has a config.yml file which allows you to customize displayed messages.
 
 Let's see how it works:
 
@@ -41,7 +41,7 @@ Let's see how it works:
 
 ```
 ---
-# BannedBroadcast v1.0.0 by @ItalianDevs4PM <xionbig, fycarman, luca28pet, XEmAX32, AryToNex, EvolSoft>
+# BannedBroadcast v1.1.0 by @ItalianDevs4PM <NikoZazza, fycarman, luca28pet, XEmAX32, AryToNex, EvolSoft>
 
 # Switch for banned messages
 # If true the plugin will send messages to players.
@@ -71,6 +71,6 @@ There are two variables: ```{player}``` and ```{ip}```
 
 ## Credits
 
-This plugin is developed by @ItalianDevs4PM (@AryToNeX, @EvolSoft, @fycarman, @luca28pet, @XEmAX32, @xionbig)
+This plugin is developed by @ItalianDevs4PM (@AryToNeX, @EvolSoft, @fycarman, @luca28pet, @XEmAX32, @NikoZazza)
 
 Follow us on GitHub, PocketMine Forums and Twitter!
