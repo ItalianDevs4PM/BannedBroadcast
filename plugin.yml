@@ -4,7 +4,7 @@
 name: BannedBroadcast
 description: Broadcast a message when a banned or unwhitelisted player attempts to join
 api: [3.0.0-ALPHA7]
-version: 1.0.1
+version: 1.1.0
 main: BannedBroadcast\Main
 author: ItalianDevs4PM <NikoZazza, luca28pet, XEmAX32, fycarman, AryToNeX, EvolSoft>
 website: https://github.com/ItalianDevs4PM
