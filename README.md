@@ -1,12 +1,12 @@
 # BannedBroadcast
 
-Version: **1.0.0**
+Version: **1.1.0**
 
-For PocketMine: **1.5** and above (API **1.12.0**)
+For PocketMine: **1.6.2dev** and above (API **3.0.0-ALPHA7**)
 
 ## License
 
-Copyright (C) 2015 ItalianDevs4PM
+Copyleft (<C) 2015-2017 ItalianDevs4PM
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
