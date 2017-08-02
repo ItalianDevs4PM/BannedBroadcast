@@ -24,13 +24,16 @@ class Main extends PluginBase implements Listener{
 
   public function onEnable(){
     $this->saveDefaultConfig();
-    if($this->getConfig()->get("banned-switch") !== true and $this->getConfig()->get("banned-switch") !== false){
+    if($this->getConfig()->get("banned-switch") !== true && $this->getConfig()->get("banned-switch") !== false){
       $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter ".$this->getConfig()->get("banned-switch")." on banned-switch");
       $this->getServer()->getPluginManager()->disablePlugin($this);
-    }elseif($this->getConfig()->get("unwhitelisted-switch") !== true and $this->getConfig()->get("unwhitelisted-switch") !== false){
+      return;
+    }
+    if($this->getConfig()->get("unwhitelisted-switch") !== true && $this->getConfig()->get("unwhitelisted-switch") !== false){
       $this->getLogger()->alert(TextFormat::RED . "Unrecognized parameter ".$this->getConfig()->get("unwhitelisted-switch")." on unwhitelisted-switch");
       $this->getServer()->getPluginManager()->disablePlugin($this);
-    }else{
+      return;
+    }
       $this->getServer()->getPluginManager()->registerEvents($this, $this);
       $this->getLogger()->info(TextFormat::GREEN . "BannedBroadcast is enabled!");
     }
@@ -41,28 +44,24 @@ class Main extends PluginBase implements Listener{
   }
 
   public function onPreLogin(PlayerPreLoginEvent $e){
-    $player = $e->getPlayer();
-    $bmessage = str_replace(["{player}", "{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("banned-message"));
-    $wmessage = str_replace(["{player}", "{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("unwhitelisted-message"));
-    
-    if($this->getConfig()->get("banned-switch") === true and $player->isBanned()){
+    if($this->getConfig()->get("banned-switch") === true && $e->getPlayer()->isBanned()){
       foreach($this->getServer()->getOnlinePlayers() as $ps){
         if($ps->hasPermission("bb.ban")){
-          $ps->sendMessage(TextFormat::YELLOW . "[BB] ".$bmessage);
+          $ps->sendMessage(TextFormat::YELLOW . "[BB] " . str_replace(["{player}", "{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("banned-message")));
         }
       }
     }
     
-    if($this->getConfig()->get("unwhitelisted-switch") === true and !$player->isWhitelisted()){
+    if($this->getConfig()->get("unwhitelisted-switch") === true && !$e->getPlayer()->isWhitelisted()){
       foreach($this->getServer()->getOnlinePlayers() as $ps){
         if($ps->hasPermission("bb.whitelist")){
-          $ps->sendMessage(TextFormat::YELLOW . "[BB] ".$wmessage);
+          $ps->sendMessage(TextFormat::YELLOW . "[BB] " . str_replace(["{player}", "{ip}"], [$player->getName(), $player->getAddress()], $this->getConfig()->get("unwhitelisted-message")));
         }
       }  
     }
   }
 
-    public function onCommand(CommandSender $sender, Command $command, $label, array $args){
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
         switch($command->getName()){
             case "unwl":
                 if(isset($args[0])){
@@ -95,8 +94,10 @@ class Main extends PluginBase implements Listener{
                 }else{
                   return false;
                 }
+                break;
             default:
                 return false;
+                break;
         }
     }
   
